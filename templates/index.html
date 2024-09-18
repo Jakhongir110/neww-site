@@ -1,28 +1,31 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>News site</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
+{% extends "base.html" %}
+{% load static %}
 
-        <h2>Categories</h2>
-        {% for ctg in categories %}
-        {{ ctg.name }}<br>
-        {% endfor %}
+{% block title %} Main page {% endblock title %}
+
+
+{% block content %}
+
+<div>
+    {% if request.user.is_authenticated %}
+    <a href="{% url 'accounts:logout' %}"> Log out </a> |
+    <a href="{% url 'accounts:userupdate' %}"> Edit profile </a>
+
+    {% else %}
+    <a href="{% url 'accounts:signup' %}"> Sign up </a> |
+    <a href="{% url 'accounts:login' %}"> Login </a>
+    {% endif %}
+</div>
+
+<h2>Categories</h2>
+{% for ctg in categories %}
+{{ ctg.name }}<br>
+{% endfor %}
 <hr>
-        <h3>Main news</h3>
-        {% for article in main_news%}
-        {{article.title}} | {{article.category}} | {{article.updated_at}}<br>
-        {% endfor %}
+<h3>Main news</h3>
+{% for article in main_news%}
+{{article.title}} | {{article.category}} | {{article.updated_at}}<br>
+{% endfor %}
 <hr>
-    </body>
-</html>
+
+{% endblock content %}
