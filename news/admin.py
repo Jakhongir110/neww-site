@@ -14,6 +14,7 @@ class TagAdmin(admin.ModelAdmin):
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'category', 'is_active', 'created_at')
     readonly_fields = ('views',)
+    prepopulated_fields = {'slug': ['title']}
     
     
     filter_horizontal = ('tags',)

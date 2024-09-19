@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 from accounts.models import User
 # Create your models here.
 
@@ -26,6 +27,7 @@ class Tag(BaseModel):
 class Article(BaseModel):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='articles')
     title = models.CharField(max_length=255, unique=True)
+    slug = models.SlugField(null=True, blank=True)
     subtitle = models.CharField(max_length=255)
     image = models.ImageField(upload_to="articles")
     description = models.TextField()
@@ -35,3 +37,9 @@ class Article(BaseModel):
     
     def __str__(self):
         return f"{self.id} {self.title}"
+    
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title, allow_unicode=True)
+        return super().save(*args, **kwargs)
