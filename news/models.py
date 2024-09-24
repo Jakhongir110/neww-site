@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 from accounts.models import User
+from ckeditor_uploader.fields import RichTextUploadingField
 # Create your models here.
 
 class BaseModel(models.Model):
@@ -30,7 +31,7 @@ class Article(BaseModel):
     slug = models.SlugField(null=True, blank=True)
     subtitle = models.CharField(max_length=255)
     image = models.ImageField(upload_to="articles")
-    description = models.TextField()
+    description = RichTextUploadingField()
     views = models.PositiveIntegerField(default=0)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='articles')
     tags = models.ManyToManyField(Tag, related_name='articles', null=True)
@@ -43,3 +44,13 @@ class Article(BaseModel):
         if not self.slug:
             self.slug = slugify(self.title, allow_unicode=True)
         return super().save(*args, **kwargs)
+    
+    
+class Contact(BaseModel):
+    name = models.CharField(max_length=150)
+    email = models.EmailField()
+    message = models.TextField()
+    
+    
+    def __str__(self):
+        return self.name

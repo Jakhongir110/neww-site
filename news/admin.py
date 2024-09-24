@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Tag, Article
+from .models import Category, Tag, Article, Contact
 # Register your models here.
 
 @admin.register(Category)
@@ -18,3 +18,7 @@ class ArticleAdmin(admin.ModelAdmin):
     
     
     filter_horizontal = ('tags',)
+    
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'email', 'message')
