@@ -18,6 +18,7 @@ class ArticleAdmin(admin.ModelAdmin):
     
     
     filter_horizontal = ('tags',)
+    list_editable = ('category', 'is_active',)
     
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):

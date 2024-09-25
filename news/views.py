@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
-from .models import Article
+from .models import Article, Category
 from .forms import ContactForm
 from django.contrib import messages
 # Create your views here.
@@ -48,3 +48,12 @@ class ContactView(View):
             return redirect("contact")
         messages.error(request,"Something went error")
         return render(request, "contact.html")
+    
+class CategoryArticlesListView(View):
+    def get(self, request, id):
+        category = get_object_or_404(Category, id=id)
+        articles = category.articles.all().filter(is_active="True")
+        context = {
+            "articles": articles
+        }
+        return render(request, "category.html", context)

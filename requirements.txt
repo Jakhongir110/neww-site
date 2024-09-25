@@ -1,3 +1,4 @@
 Django~=5.0
 pillow~=10.4.0
 django-ckeditor~=6.4.2
+django-jazzmin~=3.0.0
