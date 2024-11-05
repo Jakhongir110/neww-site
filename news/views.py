@@ -54,6 +54,7 @@ class CategoryArticlesListView(View):
         category = get_object_or_404(Category, id=id)
         articles = category.articles.all().filter(is_active="True")
         context = {
-            "articles": articles
+            "articles": articles,
+            "category": category,
         }
         return render(request, "category.html", context)

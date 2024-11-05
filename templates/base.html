@@ -94,7 +94,7 @@
                 <div class="navbar-nav mr-auto py-0">
                     <a href="/" class="nav-item nav-link active">Home</a>
                     {% for category in categories %}
-                    {% if forloop.counter < 3 %}
+                    {% if forloop.counter < 5 %}
                         <a href="{% url 'category_articles' category.id %}" class="nav-item nav-link">{{ category.name }}</a>
                     {% endif %}
                     {% endfor %}
@@ -102,7 +102,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Other category</a>
                         <div class="dropdown-menu rounded-0 m-0">
                         {% for category in categories %}
-                        {% if forloop.counter > 2 %}
+                        {% if forloop.counter > 4 %}
                             <a href="{% url 'category_articles' category.id %}" class="dropdown-item">{{ category.name }}</a>
                         {% endif %}
                         {% endfor %}
@@ -214,7 +214,7 @@
         <p class="m-0 text-center">&copy; <a href="#">Your Site Name</a>. All Rights Reserved. 
 		
 		<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-		Design by <a href="https://htmlcodex.com">HTML Codex</a></p>
+		Design by <a href="">2024</a></p>
     </div>
     <!-- Footer End -->
 
