@@ -5,6 +5,8 @@ from .models import Category, Tag, Article, Contact
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'is_active', 'created_at')
+    # prepopulated_fields = {'slug': ['name']}
+    
     
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):

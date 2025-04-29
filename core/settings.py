@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+# from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ckeditor',
+    # 'modeltranslation',
     
     #my apps
     'news',
@@ -35,6 +37,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    # 'django.middleware.locale.LocaleMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -100,6 +103,26 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
+
+# LANGUAGES = [
+#     ('uz', _('Uzbek')),
+#     ('ru', _('Russian')),
+#     ('eng', _('English')),
+#     ('kg', _('Kyrgyz')),
+# ]
+
+# LOCALE_PATHS = [
+#     os.path.join(BASE_DIR, 'locale'),
+# ]
+
+# MODELTRANSLATION_LANGUAGES = ['eng', 'ru', 'kg', 'uz']
+# # MODELTRANSLATION_FALLBACK_LANGUAGES = ('eng', 'ru', 'kg', 'uz')
+# MODELTRANSLATION_FALLBACK_LANGUAGES = {'default' : ('eng', 'ru'), 'uz': ('kg', 'ru')}
+# MODELTRANSLATION_PREPOPULATE_LANGUAGE = 'eng'
+
+# MODELTRANSLATION_TRANSLATION_FILES = (
+#     'news.translations',
+# )
 
 TIME_ZONE = 'Asia/Tashkent'
 
